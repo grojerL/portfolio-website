@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Jason — Software Engineer</title><meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root{--purple:#7e0be6;--dark:#262334;--light:#eff1f7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#111;font-family:Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%} a{color:inherit;text-decoration:none}
+.preview__content{width:100%;overflow:hidden}
+.block-header{position:relative;min-height:81px;background:var(--dark);color:#fff;padding:24px 16px}
+.block-header-layout{max-width:1240px;margin:auto}
+.block-header-logo__image{display:block;width:111px;height:auto}
+
+.block{position:relative;width:100%;padding:16px 0;overflow:hidden}
+.block-background{position:absolute;inset:0;z-index:-2}
+.block-layout-container{width:100%;max-width:1240px;margin:0 auto;padding:0 16px}
+.block-layout{position:relative;display:grid;grid-template-columns:var(--grid-template-columns);grid-template-rows:var(--grid-template-rows);min-height:var(--block-min-height,auto);margin:auto}
+.layout-element{position:relative;min-width:0;min-height:0;z-index:var(--z-index,1);grid-row:var(--grid-row);grid-column:var(--grid-column);display:flex;align-items:var(--align,stretch);justify-content:var(--justify,stretch)}
+.layout-element__component{width:100%;height:100%;min-width:0}
+.text-box{display:flex;flex-direction:column;justify-content:center;overflow-wrap:anywhere}
+.text-box h3,.text-box h5,.text-box p{margin:0}
+.text-box h3,.text-box h5{font-family:'DM Sans',Inter,sans-serif;font-weight:700}
+.text-box h3 span,.text-box h5 span{font-family:'DM Sans',Inter,sans-serif !important;font-weight:700 !important}
+.text-box h3{font-size:clamp(28px,3vw,44px);line-height:1.05}
+.text-box h5{font-size:clamp(15px,1.25vw,20px);line-height:1.35}
+.text-box p,.text-box li{font-size:16px;line-height:1.6}
+.text-box ul{margin:0;padding-left:20px}
+
+.grid-button{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:44px;border:0;background:#fff;color:#000;font-family:Inter,sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:.2s}
+.grid-button:hover{background:#eff1f7;transform:translateY(-1px)}
+
+.image{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.image img{display:block;width:100%;height:100%;object-fit:cover}
+.video{position:relative;width:100%;height:100%;overflow:hidden}
+.video img{width:100%;height:100%;object-fit:cover}
+.social-icons{display:flex;gap:20px;color:#fff}
+.social-icons a:hover{color:#9a64ce}
+
+/* Contact */
+.form__control{width:100%;display:flex;flex-direction:column;gap:18px}
+.input__label{display:block;margin-bottom:7px;color:#fff;font-size:15px}
+.input__component{width:100%;height:48px;border:.5px solid rgba(115,115,115,.14);border-radius:12px;background:#6920ad;color:#fff;padding:0 14px;font:inherit;outline:none}
+textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
+.input__component:focus{border-color:rgba(255,255,255,.55);box-shadow:0 0 0 3px rgba(255,255,255,.08)}
+.form__button{width:max-content;min-width:110px;padding:0 24px;height:44px;border-radius:50px;color:#7e0be6}
+.form__button:hover{background:#1d1e20;color:#fff}
+
+/* Colors */
+.bg-dark{background:#262334}.bg-light{background:#eff1f7}.bg-purple{background:#7e0be6}.bg-white{background:#fff}
+.on-dark .text-box{color:#fff}
+
+/* ===== Skills section (card style) ===== */
+.skills{padding:80px 0}
+.skills-inner{max-width:1240px;margin:0 auto;padding:0 16px}
+.skills h3{margin:0 0 32px;font-family:'DM Sans',Inter,sans-serif;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.05;color:#000}
+.skills-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.skill-card{background:#fff;border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04);height:222px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:16px;text-align:center;transition:transform .2s,box-shadow .2s}
+.skill-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.skill-card img{height:72px;width:auto;max-width:100px;object-fit:contain}
+.skill-card span{font-family:'DM Sans',Inter,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#141518}
+
+@media(max-width:1000px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){
+ .block-layout{grid-template-columns:var(--m-grid-template-columns);grid-template-rows:var(--m-grid-template-rows);min-height:var(--m-block-min-height,auto)}
+ .layout-element{grid-row:var(--m-grid-row);grid-column:var(--m-grid-column)}
+ .block-header{min-height:50px;padding:16px}.block-header-logo__image{width:70px}
+ .text-box h3{font-size:32px}.text-box h5{font-size:17px}
+}
+@media(max-width:600px){
+ .skills{padding:60px 0}
+ .skills-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+ .skill-card{height:180px;gap:18px}
+ .skill-card img{height:56px}
+ .skill-card span{font-size:16px}
+}
+</style></head><body><main class="preview__content">
+
+<header class="block-header" id="header"><div class="block-header-layout"><a href=""><img alt="" class="block-header-logo__image" src="https://assets.zyrosite.com/KuIUU2NmEUXDPe7O/logo-YNqooj7a81uJ31ZV.svg"/></a></div></header>
+
+<!-- Nav -->
+<section class="block bg-white"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:209px 203px 130px 5px 130px 5px 130px 412px;--grid-template-rows:14px 8px 21px 6px 1fr;--block-min-height:65px;--m-grid-template-columns:99px 130px 99px;--m-grid-template-rows:16px 42px 16px 50px 16px 50px 16px 50px 0px">
+<div class="layout-element" style="--align:center;--justify:center;--z-index:1;--grid-row:2/5;--grid-column:5/6;--m-grid-row:6/7;--m-grid-column:2/3"><a class="grid-button layout-element__component" href="#about">About</a></div>
+<div class="layout-element" style="--align:center;--justify:center;--z-index:2;--grid-row:2/5;--grid-column:3/4;--m-grid-row:4/5;--m-grid-column:2/3"><a class="grid-button layout-element__component" href="#work">Work</a></div>
+<div class="layout-element" style="--align:center;--justify:center;--z-index:3;--grid-row:2/5;--grid-column:7/8;--m-grid-row:8/9;--m-grid-column:2/3"><a class="grid-button layout-element__component" href="#contact">Contact</a></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:4;--grid-row:3/4;--grid-column:1/2;--m-grid-row:2/3;--m-grid-column:1/4"><div class="text-box layout-element__component"><div><h3 style="color:#1a1a1a;font-size:16px">Jason</h3></div></div></div>
+</div></div></section>
+
+<!-- Hero -->
+<section class="block on-dark" style="padding:16px 0"><div class="block-background bg-dark"></div><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:206px 24px 18px 200px 18px 24px 128px 400px 206px;--grid-template-rows:128px 46px 167px 23px 19px 30px 18px 32px 1fr;--block-min-height:540px;--m-grid-template-columns:57px 22px 171px 22px 56px;--m-grid-template-rows:121px 167px 24px 31px 18px 31px 13px 167px 56px">
+<div class="layout-element" style="--align:center;--justify:center;--z-index:1;--grid-row:6/9;--grid-column:2/7;--m-grid-row:4/7;--m-grid-column:1/6"><div class="image" style="border-radius:40px"><img alt="" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=109,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/pair-gr-YZ97g0DN1ysPXy4D.png"/></div></div>
+<div class="layout-element" style="--align:center;--justify:center;--z-index:2;--grid-row:2/5;--grid-column:3/6;--m-grid-row:2/3;--m-grid-column:3/4"><div class="image" style="border-radius:50% 50% 50% 50%/45% 45% 55% 55%;background:#727586"><img alt="" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/m2WlVObDrjCD4r6v/generated/generated-AQE4bD9rKBIKnQOA.png"/></div></div>
+<div class="layout-element" style="--justify:center;--z-index:3;--grid-row:7/8;--grid-column:4/5;--m-grid-row:5/6;--m-grid-column:2/5"><div class="social-icons layout-element__component">
+<a href="https://linkedin.com/" target="_blank" rel="noopener" title="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5.37 24H.4V7.98h4.98V24zM2.88 5.79C1.29 5.79 0 4.47 0 2.88a2.88 2.88 0 1 1 5.76 0c0 1.59-1.29 2.91-2.88 2.91zM24 24h-4.97v-7.8c0-1.86-.04-4.24-2.59-4.24-2.58 0-2.98 2.02-2.98 4.11V24H8.49V7.98h4.77v2.18h.07c.66-1.26 2.29-2.59 4.71-2.59 5.04 0 5.96 3.32 5.96 7.62V24z"/></svg></a>
+<a href="https://twitter.com/" target="_blank" rel="noopener" title="X"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></svg></a>
+<a href="https://youtube.com/" target="_blank" rel="noopener" title="YouTube"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.12-2.13C19.5 3.56 12 3.56 12 3.56s-7.5 0-9.38.5A3 3 0 0 0 .5 6.2C0 8.09 0 12.02 0 12.02s0 3.93.5 5.81a3 3 0 0 0 2.12 2.1c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.5a3 3 0 0 0 2.12-2.11c.5-1.88.5-5.81.5-5.81s0-3.93-.5-5.82zM9.55 15.59V8.45l6.27 3.57-6.27 3.57z"/></svg></a>
+</div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:4;--grid-row:3/4;--grid-column:8/9;--m-grid-row:8/9;--m-grid-column:1/6"><div class="text-box layout-element__component"><div>
+<p style="color:#eeca0a;margin-bottom:8px">{</p>
+<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"name"</span>: <span style="color:#ee8239">"ethan"</span><span style="color:#c2c3c1">,</span></p>
+<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"occupation"</span>: <span style="color:#ee8239">"software engineer"</span><span style="color:#c2c3c1">,</span></p>
+<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"likes"</span>: <span style="color:#ad5dac">[</span><span style="color:#ee8239">"snowboarding", "tacos"</span><span style="color:#ad5dac">]</span><span style="color:#c2c3c1">,</span></p>
+<p style="color:#eeca0a">}</p>
+</div></div></div>
+</div></div></section>
+
+<!-- Work -->
+<section class="block bg-white" id="work" style="padding:16px 0"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:80px 23px 194px 103px 12px 137px 30px 41px 158px 34px 12px 91px 206px 103px;--grid-template-rows:120px 31px 3px 7px 48px 7px 72px 42px 24px 336px 44px 105px 5px 80px 30px 168px 102px 96px 42px 34px 144px 236px 1fr;--block-min-height:1907px;--m-grid-template-columns:328px;--m-grid-template-rows:24px 24px 6px 42px 1px 47px 63px 9px 336px 24px 200px 16px 63px 21px 168px 28px 200px 24px 32px 16px 120px 24px 200px 57px">
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:4;--grid-row:2/3;--grid-column:3/4;--m-grid-row:2/3;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3 style="font-size:24px">Portfolio</h3></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:1;--grid-row:4/7;--grid-column:3/13;--m-grid-row:4/5;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3>My Work</h3></div></div></div>
+<div class="layout-element" style="--z-index:5;--grid-row:5/6;--grid-column:6/14;--m-grid-row:6/7;--m-grid-column:1/2;color:#7e0be6"><svg height="100" width="100%" stroke="currentColor"><line stroke-width="4" x1="0" x2="100%" y1="50%" y2="50%"></line></svg></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:2;--grid-row:8/9;--grid-column:3/9;--m-grid-row:7/8;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h5>Co-Creator of a NLP application</h5></div></div></div>
+<div class="layout-element" style="--align:center;--justify:center;--z-index:12;--grid-row:10/12;--grid-column:3/10;--m-grid-row:11/12;--m-grid-column:1/2"><div class="video"><img src="https://i.vimeocdn.com/video/1780905108-2a10c8db56d2566319c7257ec376f88260dc33b47112ccb439c23fad665c1175-d_720" alt="" referrerpolicy="origin"/></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:6;--grid-row:10/11;--grid-column:11/14;--m-grid-row:9/10;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><ul>
+<li><p>Architect of the Full Application Suite (iOS, Android) &amp; Responsive Website Infrastructure</p></li>
+<li><p>Expertise in Flutter, Flask, and MongoDB</p></li>
+<li><p>Implemented Robust Security Protocols for Safeguarding Sensitive Linguistic Data</p></li>
+<li><p>Pioneered Advanced Sentiment Analysis Algorithms for Enhanced User Experience</p></li>
+<li><p>Contributed to Open Source NLP Projects, Demonstrating Commitment to Knowledge Sharing</p></li></ul></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:3;--grid-row:13/15;--grid-column:3/6;--m-grid-row:13/14;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h5>Software engineer, Microsoft</h5></div></div></div>
+<div class="layout-element" style="--align:center;--justify:center;--z-index:10;--grid-row:14/18;--grid-column:7/15;--m-grid-row:17/18;--m-grid-column:1/2"><div class="video"><img src="https://i.ytimg.com/vi/Uh9643c2P6k/hqdefault.jpg" alt="" referrerpolicy="origin"/></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:7;--grid-row:16/17;--grid-column:2/5;--m-grid-row:15/16;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><ul>
+<li><p>Contributed to web-based applications, services, or platforms using technologies like <a href="https://ASP.NET" target="_blank">ASP.NET</a>, TypeScript, JavaScript, etc.</p></li>
+<li><p>Developed applications, tools &amp; software products using languages like C++, C#, Python</p></li></ul></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:9;--grid-row:19/20;--grid-column:3/8;--m-grid-row:19/20;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h5>3 different SWE internships</h5></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:8;--grid-row:21/22;--grid-column:12/14;--m-grid-row:21/22;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><ul>
+<li><p>Immersed in Coding Challenges at CipherCraft</p></li>
+<li><p>Navigated Development Projects at PulsePoint Startups</p></li>
+<li><p>Contributed to Various Tech Ventures</p></li></ul></div></div></div>
+<div class="layout-element" style="--align:center;--justify:center;--z-index:11;--grid-row:21/23;--grid-column:3/10;--m-grid-row:23/24;--m-grid-column:1/2"><div class="video"><img src="https://i.ytimg.com/vi/d-1FbVQIWsA/hqdefault.jpg" alt="" referrerpolicy="origin"/></div></div>
+</div></div></section>
+
+<!-- About -->
+<section class="block bg-light" id="about" style="padding:16px 0"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:103px 194px 50px 7px 46px 64px 297px 63px 297px 103px;--grid-template-rows:120px 24px 7px 1px 48px 6px 58px 192px 48px 1fr;--block-min-height:538px;--m-grid-template-columns:328px;--m-grid-template-rows:78px 24px 42px 16px 19px 13px 192px 15px 240px 24px 168px 0px">
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:3;--grid-row:2/4;--grid-column:2/3;--m-grid-row:2/3;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3 style="font-size:24px">Portfolio</h3></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:1;--grid-row:3/7;--grid-column:2/4;--m-grid-row:3/4;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3>About Me</h3></div></div></div>
+<div class="layout-element" style="--z-index:4;--grid-row:5/6;--grid-column:5/10;--m-grid-row:5/6;--m-grid-column:1/2;color:#7e0be6"><svg height="100" width="100%" stroke="currentColor"><line stroke-width="4" x1="0" x2="100%" y1="50%" y2="50%"></line></svg></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:2;--grid-row:8/9;--grid-column:2/6;--m-grid-row:7/8;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p>I'm a passionate and versatile software engineer with proficiency in a diverse range of technologies, including C++, C#, Python, TypeScript, JavaScript, and <a href="https://asp.net/" target="_blank">ASP.NET</a>. <strong>My journey in the tech world has been marked by innovation, collaboration, and a commitment to excellence</strong></p></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:5;--grid-row:8/10;--grid-column:7/8;--m-grid-row:9/10;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p>One of my significant achievements includes co-creating an NLP application, where I not only implemented cutting-edge features but also prioritized robust security protocols to ensure user data integrity. <strong>This experience reflects my dedication to delivering solutions that not only push technological boundaries but also prioritize user trust and data privacy.</strong></p></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:6;--grid-row:8/9;--grid-column:9/10;--m-grid-row:11/12;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p>Beyond my core projects, I actively contribute to open-source initiatives, firmly believing in the power of knowledge sharing and collaborative development. <strong>It's my way of giving back to the tech community and staying engaged with the latest industry trends.</strong></p></div></div></div>
+</div></div></section>
+
+<!-- Skills (new card layout) -->
+<section class="block skills bg-light">
+<div class="skills-inner">
+<h3>Suffering from skill issues</h3>
+<div class="skills-grid">
+<div class="skill-card"><img alt="Redis" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/logos-11-YD0DvP2eM9irG2n8.png"/><span>Redis</span></div>
+<div class="skill-card"><img alt="Python" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/logos-02-meP1GDEK6kSJbLe0.png"/><span>Python</span></div>
+<div class="skill-card"><img alt="Flask" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"/><span>Flask</span></div>
+<div class="skill-card"><img alt="Django" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"/><span>Django</span></div>
+<div class="skill-card"><img alt="FastAPI" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg"/><span>FastAPI</span></div>
+<div class="skill-card"><svg viewBox="0 0 64 64" width="72" height="72" fill="none" stroke="#7e0be6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 32a18 18 0 0 1 30-13"/><path d="M46 8v12H34"/><path d="M50 32a18 18 0 0 1-30 13"/><path d="M18 56V44h12"/></svg><span>CI/CD Pipeline</span></div>
+<div class="skill-card"><img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/><span>CSS</span></div>
+<div class="skill-card"><img alt="Javascript" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/logos-03-A3QPrLG0XVHwOx7M.png"/><span>Javascript</span></div>
+<div class="skill-card"><img alt="HTML" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/><span>HTML</span></div>
+<div class="skill-card"><img alt="React" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/logos-07-YX4XzqqN92uXrDLY.png"/><span>React</span></div>
+<div class="skill-card"><img alt="Node.js" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"/><span>Node.js</span></div>
+<div class="skill-card"><img alt="SQL" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/logos-06-m2WlrxJBOOSLXJZA.png"/><span>SQL</span></div>
+<div class="skill-card"><img alt="PostgreSQL" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=scale-down,q=100/KuIUU2NmEUXDPe7O/logos-10-AzG8DJpVZbSL81LO.png"/><span>PostgreSQL</span></div>
+</div></div></section>
+
+<!-- Contact -->
+<section class="block bg-purple" id="contact" style="padding:16px 0"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:103px 400px 115px 400px 206px;--grid-template-rows:116px 4px 62px 82px 81px 160px 1fr;--block-min-height:549px;--m-grid-template-columns:328px;--m-grid-template-rows:60px 42px 18px 81px 40px 384px 27px">
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:1;--grid-row:3/4;--grid-column:2/3;--m-grid-row:2/3;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3 style="color:#fff">I don't write code. I write growth.</h3></div></div></div>
+<div class="layout-element" style="--justify:center;--z-index:2;--grid-row:2/7;--grid-column:4/5;--m-grid-row:6/7;--m-grid-column:1/2"><div class="layout-element__component"><form class="form__control" name="Contact form" action="https://formsubmit.co/lukainasaridze56@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="New message from my portfolio!"/>
+<input type="hidden" name="_template" value="table"/>
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
+<div><label class="input__label" for="Name">Name</label><input class="input__component" id="Name" name="name" placeholder="Your name" type="text"/></div>
+<div><label class="input__label" for="Email">Your email*</label><input class="input__component" id="Email" name="email" placeholder="Your email address" type="email" required/></div>
+<div><label class="input__label" for="Message">Message*</label><textarea class="input__component" id="Message" name="message" placeholder="Enter your message" required></textarea></div>
+<button class="grid-button form__button" type="submit">Submit</button></form></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:3;--grid-row:5/6;--grid-column:2/3;--m-grid-row:4/5;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p style="color:#fff;font-size:18px">(Okay, I write code too.) But what you really get is more orders, more time, and a business that works while you sleep.</p></div></div></div>
+</div></div></section>
+
+<!-- Footer -->
+<section class="block bg-purple" style="padding:16px 0"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:103px 297px 824px;--grid-template-rows:46px 68px 1fr;--block-min-height:124px;--m-grid-template-columns:328px;--m-grid-template-rows:84px 68px 0px">
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--grid-row:2/3;--grid-column:2/3;--m-grid-row:2/3;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p style="color:rgba(255,255,255,.62);font-size:14px"><strong>© 2023 Jason</strong></p></div></div></div>
+</div></div></section>
+
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  const t=document.getElementById(a.getAttribute('href').slice(1));
+  if(t)a.addEventListener('click',e=>{e.preventDefault();t.scrollIntoView({behavior:'smooth'})});
+ });
+});
+</script></body></html>
