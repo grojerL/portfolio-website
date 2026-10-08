@@ -49,6 +49,10 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 .video-embed{position:relative;width:100%;max-width:720px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.15)}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
+.video-embed{cursor:pointer}.video-embed>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.yt-play{position:absolute;left:50%;top:50%;width:72px;height:50px;margin:-25px 0 0 -36px;background:#7e0be6;border-radius:14px;transition:transform .2s}
+.yt-play:before{content:"";position:absolute;left:29px;top:14px;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.video-embed:hover .yt-play{transform:scale(1.1)}
 .bg-dark{background:#262334}.bg-light{background:#eff1f7}.bg-purple{background:#7e0be6}.bg-white{background:#fff}
 .on-dark .text-box{color:#fff}
 
@@ -189,7 +193,7 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 </div>
 
 <p class="about-cta">Click the “Invite to Job” or “Message” button on my profile to get started!</p>
-<div class="video-embed"><iframe src="https://www.youtube.com/embed/vXQfyuTDNC4" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="video-embed" id="yt" data-id="vXQfyuTDNC4" role="button" tabindex="0" aria-label="Play video"><img src="https://i.ytimg.com/vi/vXQfyuTDNC4/hqdefault.jpg" alt="Video preview" loading="lazy" width="480" height="360"/><span class="yt-play"></span></div>
 </div></section>
 
 <!-- Skills -->
@@ -234,4 +238,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(t)a.addEventListener('click',e=>{e.preventDefault();t.scrollIntoView({behavior:'smooth'})});
  });
 });
+
+(function(){var v=document.getElementById('yt');if(!v)return;
+function play(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.id+'?autoplay=1';f.title='YouTube video player';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;v.innerHTML='';v.appendChild(f);v.style.cursor='default'}
+v.addEventListener('click',play,{once:true});v.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')play()},{once:true});})();
 </script></body></html>
