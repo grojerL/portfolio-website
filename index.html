@@ -45,6 +45,10 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 .form__button{width:max-content;min-width:110px;padding:0 24px;height:44px;border-radius:50px;color:#7e0be6}
 .form__button:hover{background:#1d1e20;color:#fff}
 
+/* YouTube embed */
+.video-embed{position:relative;width:100%;max-width:720px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
 /* Colors */
 .bg-dark{background:#262334}.bg-light{background:#eff1f7}.bg-purple{background:#7e0be6}.bg-white{background:#fff}
 .on-dark .text-box{color:#fff}
@@ -96,9 +100,9 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 </div></div>
 <div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:4;--grid-row:3/4;--grid-column:8/9;--m-grid-row:8/9;--m-grid-column:1/6"><div class="text-box layout-element__component"><div>
 <p style="color:#eeca0a;margin-bottom:8px">{</p>
-<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"name"</span>: <span style="color:#ee8239">"ethan"</span><span style="color:#c2c3c1">,</span></p>
-<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"occupation"</span>: <span style="color:#ee8239">"software engineer"</span><span style="color:#c2c3c1">,</span></p>
-<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"likes"</span>: <span style="color:#ad5dac">[</span><span style="color:#ee8239">"snowboarding", "tacos"</span><span style="color:#ad5dac">]</span><span style="color:#c2c3c1">,</span></p>
+<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"name"</span>: <span style="color:#ee8239">"luka"</span><span style="color:#c2c3c1">,</span></p>
+<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"occupation"</span>: <span style="color:#ee8239">"website developer"</span><span style="color:#c2c3c1">,</span></p>
+<p style="color:#eeca0a;margin-bottom:8px"><span style="color:#6be2ad">&nbsp;&nbsp;&nbsp;"likes"</span>: <span style="color:#ad5dac">[</span><span style="color:#ee8239">"khachapuri", "bug hunting", "3am coffee"</span><span style="color:#ad5dac">]</span><span style="color:#c2c3c1">,</span></p>
 <p style="color:#eeca0a">}</p>
 </div></div></div>
 </div></div></section>
@@ -130,13 +134,14 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 </div></div></section>
 
 <!-- About -->
-<section class="block bg-light" id="about" style="padding:16px 0"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:103px 194px 50px 7px 46px 64px 297px 63px 297px 103px;--grid-template-rows:120px 24px 7px 1px 48px 6px 58px 192px 48px 1fr;--block-min-height:538px;--m-grid-template-columns:328px;--m-grid-template-rows:78px 24px 42px 16px 19px 13px 192px 15px 240px 24px 168px 0px">
+<section class="block bg-light" id="about" style="padding:16px 0"><div class="block-layout-container"><div class="block-layout" style="--grid-template-columns:103px 194px 50px 7px 46px 64px 297px 63px 297px 103px;--grid-template-rows:120px 24px 7px 1px 48px 6px 58px 192px 48px 405px 48px 1fr;--block-min-height:1000px;--m-grid-template-columns:328px;--m-grid-template-rows:78px 24px 42px 16px 19px 13px 192px 15px 240px 24px 168px 24px 185px 24px 0px">
 <div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:3;--grid-row:2/4;--grid-column:2/3;--m-grid-row:2/3;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3 style="font-size:24px">Portfolio</h3></div></div></div>
 <div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:1;--grid-row:3/7;--grid-column:2/4;--m-grid-row:3/4;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><h3>About Me</h3></div></div></div>
 <div class="layout-element" style="--z-index:4;--grid-row:5/6;--grid-column:5/10;--m-grid-row:5/6;--m-grid-column:1/2;color:#7e0be6"><svg height="100" width="100%" stroke="currentColor"><line stroke-width="4" x1="0" x2="100%" y1="50%" y2="50%"></line></svg></div>
 <div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:2;--grid-row:8/9;--grid-column:2/6;--m-grid-row:7/8;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p>I'm a passionate and versatile software engineer with proficiency in a diverse range of technologies, including C++, C#, Python, TypeScript, JavaScript, and <a href="https://asp.net/" target="_blank">ASP.NET</a>. <strong>My journey in the tech world has been marked by innovation, collaboration, and a commitment to excellence</strong></p></div></div></div>
 <div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:5;--grid-row:8/10;--grid-column:7/8;--m-grid-row:9/10;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p>One of my significant achievements includes co-creating an NLP application, where I not only implemented cutting-edge features but also prioritized robust security protocols to ensure user data integrity. <strong>This experience reflects my dedication to delivering solutions that not only push technological boundaries but also prioritize user trust and data privacy.</strong></p></div></div></div>
 <div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:6;--grid-row:8/9;--grid-column:9/10;--m-grid-row:11/12;--m-grid-column:1/2"><div class="text-box layout-element__component"><div><p>Beyond my core projects, I actively contribute to open-source initiatives, firmly believing in the power of knowledge sharing and collaborative development. <strong>It's my way of giving back to the tech community and staying engaged with the latest industry trends.</strong></p></div></div></div>
+<div class="layout-element" style="--align:flex-start;--justify:flex-start;--z-index:7;--grid-row:10/11;--grid-column:2/10;--m-grid-row:13/14;--m-grid-column:1/2"><div class="video-embed"><iframe src="https://www.youtube.com/embed/vXQfyuTDNC4" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>
 </div></div></section>
 
 <!-- Skills (new card layout) -->
