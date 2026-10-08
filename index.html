@@ -49,6 +49,10 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 .video-embed{position:relative;width:100%;max-width:720px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.15)}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
+.video-embed{cursor:pointer}.video-embed>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.yt-play{position:absolute;left:50%;top:50%;width:72px;height:50px;margin:-25px 0 0 -36px;background:#7e0be6;border-radius:14px;transition:transform .2s}
+.yt-play:before{content:"";position:absolute;left:29px;top:14px;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.video-embed:hover .yt-play{transform:scale(1.1)}
 .bg-dark{background:#262334}.bg-light{background:#eff1f7}.bg-purple{background:#7e0be6}.bg-white{background:#fff}
 .on-dark .text-box{color:#fff}
 
@@ -147,21 +151,21 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 <h3 class="work-kicker">Portfolio</h3>
 <h3 class="work-title">My Work</h3>
 <article class="work-item">
-<div class="work-shot"><img src="images/cryptoin.webp" alt="CryptoIn website preview" width="1031" height="490" loading="lazy" decoding="async"/></div>
+<div class="work-shot"><img src="https://cdn.jsdelivr.net/gh/grojerL/portfolio-website@main/images/cryptoin.webp" alt="CryptoIn website preview" width="1031" height="490" loading="lazy" decoding="async"/></div>
 <div class="work-info"><span class="work-num">01</span><h5>CryptoIn</h5><p class="work-sub">Real-time crypto tracker with instant conversion</p>
 <p class="work-role"><b>My role:</b> Full-Stack Developer &amp; Founder</p>
 <p>A client needed real-time crypto tracking with instant conversion between coins, without juggling multiple sites. I built CryptoIn: a Flask backend pulling live data from the CoinGecko API, paired with a hand-crafted HTML5/CSS3 frontend featuring glassmorphism and responsive grids. Users see live prices, market caps, and 24h trends, then convert any coin to another instantly. I containerized and hosted the app using Docker for reliable, consistent deployment.</p>
 <p class="work-stack"><b>Tech Stack:</b> Flask (Python) · CoinGecko API · HTML5/CSS3 · Docker</p>
 <ul class="work-chips"><li>Docker</li><li>Flask</li><li>HTML</li><li>CSS</li><li>API</li></ul></div></article>
 <article class="work-item flip">
-<div class="work-shot"><img src="images/recipecore.webp" alt="RecipeCore website preview" width="1020" height="483" loading="lazy" decoding="async"/></div>
+<div class="work-shot"><img src="https://cdn.jsdelivr.net/gh/grojerL/portfolio-website@main/images/recipecore.webp" alt="RecipeCore website preview" width="1020" height="483" loading="lazy" decoding="async"/></div>
 <div class="work-info"><span class="work-num">02</span><h5>RecipeCore</h5><p class="work-sub">Recipe discovery app with favorites and PDF export</p>
 <p class="work-role"><b>My role:</b> Full-Stack Developer &amp; Founder</p>
 <p>A food blog client needed users to discover recipes fast and save favorites, but had no backend or scalable storage. I built RecipeCore: a React frontend for instant recipe search, a FastAPI backend with secure auth, and PostgreSQL for persistent "Favorites." Users can also export saved recipes as PDFs. Result: a static content site became an interactive product with real-time search and zero data loss.</p>
 <p class="work-stack"><b>Tech Stack:</b> React · FastAPI (Python) · PostgreSQL</p>
 <ul class="work-chips"><li>React</li><li>FastAPI</li><li>API</li><li>PDF</li></ul></div></article>
 <article class="work-item">
-<div class="work-shot"><img src="images/translatecorner.webp" alt="TranslateCorner website preview" width="1021" height="482" loading="lazy" decoding="async"/></div>
+<div class="work-shot"><img src="https://cdn.jsdelivr.net/gh/grojerL/portfolio-website@main/images/translatecorner.webp" alt="TranslateCorner website preview" width="1021" height="482" loading="lazy" decoding="async"/></div>
 <div class="work-info"><span class="work-num">03</span><h5>TranslateCorner</h5><p class="work-sub">Instant translation tool with automatic language detection</p>
 <p class="work-role"><b>My role:</b> Full-Stack Developer &amp; Founder</p>
 <p>A client needed a fast way for non-technical users to translate text across languages without picking a source language manually. I built TranslateCorner: a Django backend integrating the Google Cloud Translation API with automatic language detection, plus a clean, responsive HTML/CSS interface. I also set up a CI/CD pipeline for automated testing and friction-free deployment. Result: a frictionless, production-ready tool that removed manual guesswork for global users.</p>
@@ -189,7 +193,7 @@ textarea.input__component{height:130px;padding:12px 14px;resize:vertical}
 </div>
 
 <p class="about-cta">Click the “Invite to Job” or “Message” button on my profile to get started!</p>
-<div class="video-embed"><iframe src="https://www.youtube.com/embed/vXQfyuTDNC4" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="video-embed" id="yt" data-id="vXQfyuTDNC4" role="button" tabindex="0" aria-label="Play video"><img src="https://i.ytimg.com/vi/vXQfyuTDNC4/hqdefault.jpg" alt="Video preview" loading="lazy" width="480" height="360"/><span class="yt-play"></span></div>
 </div></section>
 
 <!-- Skills -->
@@ -234,4 +238,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(t)a.addEventListener('click',e=>{e.preventDefault();t.scrollIntoView({behavior:'smooth'})});
  });
 });
+
+(function(){var v=document.getElementById('yt');if(!v)return;
+function play(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.id+'?autoplay=1';f.title='YouTube video player';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;v.innerHTML='';v.appendChild(f);v.style.cursor='default'}
+v.addEventListener('click',play,{once:true});v.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')play()},{once:true});})();
 </script></body></html>
